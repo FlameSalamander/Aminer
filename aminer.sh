@@ -14,7 +14,7 @@ MIMING_URL="mine.c3pool.com:13333"
 VERSION=1.0
 TOS=''
 UBUNTU_VERSION=20.04.1
-DONATE=1
+DONATE=0
 RED_FONT_PREFIX="\033[31m"
 LIGHT_GREEN_FONT_PREFIX="\033[1;32m"
 LIGHT_BLUE_FONT_PREFIX="\033[1;34m"
@@ -324,10 +324,10 @@ apt-get update && apt-get upgrade -y
 HEAD "Installing dependency"
 apt-get install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
 INFO "Getting xmrig source code"
-git clone https://github.com/FlameSalamnander/xmrig.git
+git clone https://github.com/FlameSalamander/xmrig.git
 INFO "Changing donate level to $DONATE %"
-sed -i 's/kDefaultDonateLevel = 0/kDefaultDonateLevel = $DONATE/g' ./xmrig-C3/src/donate.h
-sed -i 's/kMinimumDonateLevel = 0/kMinimumDonateLevel = $DONATE/g' ./xmrig-C3/src/donate.h
+sed -i 's/kDefaultDonateLevel = 0/kDefaultDonateLevel = $DONATE/g' ./xmrig/src/donate.h
+sed -i 's/kMinimumDonateLevel = 0/kMinimumDonateLevel = $DONATE/g' ./xmrig/src/donate.h
 mkdir xmrigflame/build && cd xmrigflame/build && cmake .. && make -j\$(nproc) && mv xmrig \$HOME && cd \$HOME && rm -rf xmrigflame
 INFO "XMRIG create success"
 HEAD "Please restart Termux App to run XMRIG"
